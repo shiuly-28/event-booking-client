@@ -37,6 +37,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return <div className="min-h-screen flex items-center justify-center text-gray-500">Checking access...</div>;
   }
 
+  
   return (
     <div className="min-h-screen bg-gray-50 flex">
       <aside className="w-64 bg-white border-r border-gray-100 flex flex-col">
