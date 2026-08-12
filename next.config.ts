@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
@@ -11,6 +14,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default function NextConfig() {
-  return nextConfig;
-}
+module.exports = nextConfig;

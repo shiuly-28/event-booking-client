@@ -31,7 +31,8 @@ export default async function AllEventsPage() {
               <div key={event.id || event._id} className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col">
                 <div className="relative h-48 w-full">
                   <Image
-                    src={event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80'}
+                    // এখানে প্রতিটি ইভেন্টের ইউনিক আইডি দিয়ে আলাদা আলাদা ছবি লোড করার ব্যবস্থা করা হয়েছে
+                    src={event.image || `https://picsum.photos/seed/${event.id || event._id}/800/600`}
                     alt={event.title}
                     fill
                     className="object-cover"

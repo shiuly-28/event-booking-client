@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 async function getEvents() {
   try {
@@ -30,19 +31,17 @@ export default async function FeaturedEvents() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Upcoming <span className="text-indigo-600">Events</span>
           </h2>
-          {/* এই বাটনটি ক্লিক করলে আপনার রাউটিং অনুযায়ী সরাসরি /events পেজে নিয়ে যাবে */}
           <Link href="/events" className="text-indigo-600 font-semibold hover:underline">
             View All →
           </Link>
         </div>
 
-        {/* এখানে .slice(0, 4) ব্যবহার করার কারণে ল্যান্ডিং পেজে সর্বোচ্চ ৪টি কার্ড শো করবে */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.slice(0, 4).map((event: any) => (
             <div key={event.id || event._id} className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition flex flex-col">
               <div className="relative h-48 w-full">
                 <Image
-                  src={event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80'}
+                  src={event.image || `https://picsum.photos/seed/${event.id || event._id}/800/600`}
                   alt={event.title}
                   fill
                   className="object-cover"
