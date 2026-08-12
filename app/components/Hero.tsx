@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// স্লাইডারের জন্য ইমেইজগুলোর তালিকা (আপনি চাইলে আপনার পছন্দমতো ছবি বা লোকাল পাথ দিতে পারেন)
 const sliderImages = [
   "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
   "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
