@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/app/components/Spinner';
 import { useState, useEffect } from 'react';
 
 export default function AdminBookingsPage() {
@@ -28,15 +29,21 @@ export default function AdminBookingsPage() {
   const handleConfirmBooking = async (id: string) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookings/${id}/confirm`, {
-        method: 'PATCH', // অথবা আপনার ব্যাকএন্ড অনুযায়ী PUT/PATCH মেথড দিন
-        headers: { Authorization: `Bearer ${token}` }
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookings/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ status: 'CONFIRMED' }),
       });
+      const json = await res.json();
       if (res.ok) {
-        alert('Booking confirmed successfully!');
-        fetchBookings();
+        setBookings((prev) =>
+          prev.map((b) => ((b.id || b._id) === id ? json.data : b))
+        );
       } else {
-        alert('Failed to confirm booking');
+        alert(json.message || 'Failed to confirm booking');
       }
     } catch (err) {
       console.error(err);
@@ -59,7 +66,7 @@ export default function AdminBookingsPage() {
     }
   };
 
-  if (loading) return <div className="text-gray-500">Loading bookings...</div>;
+  if (loading) return <div className="text-gray-500"><Spinner/></div>;
 
   return (
     <div>
@@ -84,13 +91,17 @@ export default function AdminBookingsPage() {
                   <td className="p-4 text-gray-600">{booking.user?.email || booking.email || 'Customer'}</td>
                   <td className="p-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      booking.status === 'confirmed' ? 'bg-green-50 text-green-700' : 'bg-yellow-50 text-yellow-700'
+                      booking.status === 'CONFIRMED'
+                        ? 'bg-green-50 text-green-700'
+                        : booking.status === 'CANCELLED'
+                        ? 'bg-red-50 text-red-700'
+                        : 'bg-yellow-50 text-yellow-700'
                     }`}>
-                      {booking.status || 'Pending'}
+                      {booking.status || 'PENDING'}
                     </span>
                   </td>
                   <td className="p-4 text-right space-x-2">
-                    {booking.status !== 'confirmed' && (
+                    {booking.status !== 'CONFIRMED' && (
                       <button
                         onClick={() => handleConfirmBooking(booking.id || booking._id)}
                         className="px-3 py-1.5 bg-green-600 text-white rounded-lg text-xs font-semibold hover:bg-green-700"

@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/app/components/Spinner';
 import { useEffect, useState } from 'react';
 
 interface Category {
@@ -144,7 +145,7 @@ export default function AdminEventsPage() {
         <h1 className="text-3xl font-bold text-gray-900">Manage Events</h1>
         <button
           onClick={openCreateForm}
-          className="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition"
+          className="px-5 py-2.5 bg-[#00684D] text-white font-semibold rounded-xl hover:bg-[#013b2c] transition"
         >
           + New Event
         </button>
@@ -170,7 +171,7 @@ export default function AdminEventsPage() {
           </div>
           <textarea placeholder="Description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="w-full border border-gray-300 rounded-lg px-3 py-2" rows={3} />
           <div className="flex gap-3">
-            <button type="submit" disabled={saving} className="px-5 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition disabled:opacity-50">
+            <button type="submit" disabled={saving} className="px-5 py-2 bg-[#00684D] text-white font-semibold rounded-lg hover:bg-[#00684D] transition disabled:opacity-50">
               {saving ? 'Saving...' : 'Save'}
             </button>
             <button type="button" onClick={() => setShowForm(false)} className="px-5 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition">
@@ -181,7 +182,7 @@ export default function AdminEventsPage() {
       )}
 
       {loading ? (
-        <p className="text-gray-500">Loading events...</p>
+         <Spinner />
       ) : events.length === 0 ? (
         <p className="text-gray-500">No events yet.</p>
       ) : (
@@ -195,7 +196,7 @@ export default function AdminEventsPage() {
                 </p>
               </div>
               <div className="flex gap-2">
-                <button onClick={() => openEditForm(ev)} className="px-4 py-1.5 bg-indigo-50 text-indigo-600 text-sm font-semibold rounded-lg hover:bg-indigo-100 transition">
+                <button onClick={() => openEditForm(ev)} className="px-4 py-1.5 bg-indigo-50 text-[#00684D] text-sm font-semibold rounded-lg hover:bg-indigo-100 transition">
                   Edit
                 </button>
                 <button onClick={() => handleDelete(ev.id)} className="px-4 py-1.5 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 transition">

@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/app/components/Spinner';
 import { useEffect, useState } from 'react';
 
 interface Category {
@@ -29,6 +30,7 @@ export default function AdminCategoriesPage() {
     try {
       const res = await fetch(`${API_URL}/categories`, { cache: 'no-store' });
       const json = await res.json();
+      console.log('Categories from backend:', json.data);
       setCategories(json.data || []);
     } catch (err) {
       setError('Failed to load categories');
@@ -116,7 +118,7 @@ export default function AdminCategoriesPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Manage Categories</h1>
 
         {error && (
@@ -129,19 +131,19 @@ export default function AdminCategoriesPage() {
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="New category name"
-            className="flex-1 border border-gray-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex-1 border border-gray-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#02382a]"
           />
           <button
             type="submit"
             disabled={creating}
-            className="px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition disabled:opacity-50"
+            className="px-6 py-2.5 bg-[#00684D] text-white font-semibold rounded-xl hover:bg-[#03553f] transition disabled:opacity-50"
           >
             {creating ? 'Adding...' : 'Add'}
           </button>
         </form>
 
         {loading ? (
-          <p className="text-gray-500">Loading categories...</p>
+           <Spinner />
         ) : categories.length === 0 ? (
           <p className="text-gray-500">No categories yet. Add one above.</p>
         ) : (
@@ -177,7 +179,7 @@ export default function AdminCategoriesPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => startEdit(cat)}
-                        className="px-4 py-1.5 bg-indigo-50 text-indigo-600 text-sm font-semibold rounded-lg hover:bg-indigo-100 transition"
+                        className="px-4 py-1.5 bg-indigo-50 text-[#00684D] text-sm font-semibold rounded-lg hover:bg-indigo-100 transition"
                       >
                         Edit
                       </button>
