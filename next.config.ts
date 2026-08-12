@@ -13,12 +13,21 @@ const nextConfig = {
     ],
   },
   typescript: {
-    // Vercel-এ বিল্ডের সময় টাইপ এরর ইগনোর করার জন্য
+    // Vercel-এ বিল্ডের সময় টাইপ এরর ইগনোর করার জন্য
     ignoreBuildErrors: true,
   },
   eslint: {
-    // বিল্ডের সময় লিথিং এরর ইগনোর করার জন্য
+    // বিল্ডের সময় লিথিং এরর ইগনোর করার জন্য
     ignoreDuringBuilds: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/admin/event',
+        destination: '/admin/events',
+        permanent: true,
+      },
+    ];
   },
 };
 
