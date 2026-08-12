@@ -69,7 +69,7 @@ export default function BookingPage() {
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => router.push('/events')}
-                className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition"
+                className="px-6 py-3 bg-[#00684D] text-white font-semibold rounded-xl hover:bg-indigo-700 transition"
               >
                 Browse Events
               </button>
@@ -101,7 +101,7 @@ export default function BookingPage() {
                       />
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-[#00684D] bg-indigo-50 px-2.5 py-1 rounded-full">
                         {event.startsAt ? new Date(event.startsAt).toLocaleDateString() : 'Upcoming'}
                       </span>
                       <h3 className="text-xl font-bold text-gray-900 mt-1">{event.title}</h3>

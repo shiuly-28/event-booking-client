@@ -37,12 +37,12 @@ export default async function AllEventsPage() {
                     fill
                     className="object-cover"
                   />
-                  <span className="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                  <span className="absolute top-3 right-3 bg-[#00684D] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                     {event.price ? `$${event.price}` : 'Free'}
                   </span>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <div className="text-sm text-indigo-600 font-medium mb-1">
+                  <div className="text-sm text-[#00684D] font-medium mb-1">
                     {event.startsAt ? new Date(event.startsAt).toLocaleDateString() : event.date}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
@@ -52,7 +52,7 @@ export default async function AllEventsPage() {
                   <div className="mt-auto">
                     <Link
                       href={`/events/${event.id || event._id}`}
-                      className="block w-full text-center bg-indigo-50 text-indigo-600 font-semibold py-2.5 rounded-xl hover:bg-indigo-600 hover:text-white transition"
+                      className="block w-full text-center bg-indigo-50 text-[#00684D] font-semibold py-2.5 rounded-xl hover:bg-[#00684D] hover:text-white transition"
                     >
                       Book Now
                     </Link>

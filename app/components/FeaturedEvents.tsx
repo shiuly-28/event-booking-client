@@ -1,6 +1,7 @@
+export const dynamic = 'force-dynamic';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
 
 async function getEvents() {
   try {
@@ -29,9 +30,9 @@ export default async function FeaturedEvents() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Upcoming <span className="text-indigo-600">Events</span>
+            Upcoming <span className="text-[#00684D]">Events</span>
           </h2>
-          <Link href="/events" className="text-indigo-600 font-semibold hover:underline">
+          <Link href="/events" className="text-[#00684D] font-semibold hover:underline">
             View All →
           </Link>
         </div>
@@ -46,12 +47,12 @@ export default async function FeaturedEvents() {
                   fill
                   className="object-cover"
                 />
-                <span className="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                <span className="absolute top-3 right-3 bg-[#00684D] text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                   {event.price ? `$${event.price}` : 'Free'}
                 </span>
               </div>
               <div className="p-6 flex flex-col flex-grow">
-                <div className="text-sm text-indigo-600 font-medium mb-1">
+                <div className="text-sm text-[#00684D] font-medium mb-1">
                   {event.startsAt ? new Date(event.startsAt).toLocaleDateString() : event.date}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
@@ -61,7 +62,7 @@ export default async function FeaturedEvents() {
                 <div className="mt-auto">
                   <Link
                     href={`/events/${event.id || event._id}`}
-                    className="block w-full text-center bg-indigo-50 text-indigo-600 font-semibold py-2.5 rounded-xl hover:bg-indigo-600 hover:text-white transition"
+                    className="block w-full text-center bg-indigo-50 text-[#00684D] font-semibold py-2.5 rounded-xl hover:bg-[#00684D] hover:text-white transition"
                   >
                     Book Now
                   </Link>

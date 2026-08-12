@@ -21,7 +21,7 @@ export default async function CategoryPage() {
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          All <span className="text-indigo-600">Categories</span>
+          All <span className="text-[#00684D]">Categories</span>
         </h1>
 
         {categories.length === 0 ? (
@@ -36,7 +36,7 @@ export default async function CategoryPage() {
                 href={`/events?categoryId=${cat.id}`}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-gray-100 hover:border-indigo-500 group"
               >
-                <h3 className="text-lg font-semibold text-gray-800 group-hover:text-indigo-600 transition">
+                <h3 className="text-lg font-semibold text-gray-800 group-hover:text-[#00684D] transition">
                   {cat.name}
                 </h3>
               </Link>

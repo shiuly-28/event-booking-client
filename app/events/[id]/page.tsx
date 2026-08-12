@@ -95,12 +95,12 @@ export default function EventDetailsPage() {
         <p className="text-gray-600 text-base mb-6">📍 {event.location}</p>
         <p className="text-gray-700 leading-relaxed mb-8">{event.description}</p>
 
-        {message && <div className="mb-4 p-3 bg-indigo-50 text-indigo-700 text-center rounded-xl font-medium">{message}</div>}
+        {message && <div className="mb-4 p-3 bg-indigo-50 text-[#00684D] text-center rounded-xl font-medium">{message}</div>}
 
         <button
           onClick={handleBooking}
           disabled={bookingLoading}
-          className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition shadow-lg"
+          className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-[#00684D] transition shadow-lg"
         >
           {bookingLoading ? 'Processing Booking...' : 'Confirm Booking'}
         </button>
