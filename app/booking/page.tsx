@@ -13,14 +13,12 @@ export default function BookingPage() {
   useEffect(() => {
     async function fetchUserBookings() {
       try {
-        // টোকেন লোকালস্টোরেজ থেকে খোঁজা (যদি থাকে)
         const token = localStorage.getItem('token') || localStorage.getItem('accessToken');
 
         const headers: HeadersInit = {
           'Content-Type': 'application/json',
         };
 
-        // যদি টোকেন থাকে তবে হেডার্সে যুক্ত করবে
         if (token) {
           headers['Authorization'] = `Bearer ${token}`;
         }
@@ -28,20 +26,18 @@ export default function BookingPage() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookings`, {
           method: 'GET',
           headers,
-          credentials: 'include', // কুকিজ ব্যবহার করলে এটি ব্যাকএন্ডে সেশন পাঠিয়ে দেবে
         });
 
         const json = await res.json();
         console.log("Bookings Response:", json);
 
-        if (!res.ok) {
-          // যদি আনঅথরাইজড বা ফেইলড হয়, তবেই কেবল লগইন পেজে পাঠাবে
-          if (res.status === 401 || res.status === 403) {
-            router.push('/login');
-            return;
-          }
-          throw new Error(json.message || 'Failed to fetch bookings');
-        }
+       if (!res.ok) {
+  if (res.status === 401) {
+    router.push('/login');
+    return;
+  }
+  throw new Error(json.message || 'Failed to fetch bookings');
+}
 
         setBookings(Array.isArray(json) ? json : json.data || json.bookings || []);
       } catch (err: any) {
@@ -100,6 +96,7 @@ export default function BookingPage() {
                         src={event.image || `https://picsum.photos/seed/${event.id || event._id}/400/300`}
                         alt={event.title || 'Event'}
                         fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover"
                       />
                     </div>

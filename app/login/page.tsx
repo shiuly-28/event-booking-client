@@ -8,37 +8,44 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+  e.preventDefault();
+  setLoading(true);
+  setError('');
 
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.message || 'Login failed');
-      }
-
-      // টোকেন লোকালস্টোরেজে সেভ করে হোমপেজে রিডিক্ট করা
-      if (data.data?.token || data.token) {
-        localStorage.setItem('token', data.data?.token || data.token);
-      }
-
-      router.push('/');
-    } catch (err: any) {
-      setError(err.message || 'Invalid email or password');
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(data.message || 'Login failed');
     }
-  };
+
+    const accessToken = data.data?.accessToken || data.data?.token || data.token;
+    const userInfo = data.data?.user;
+
+    if (accessToken) {
+      localStorage.setItem('token', accessToken);
+    }
+
+    if (userInfo) {
+      localStorage.setItem('user', JSON.stringify(userInfo));
+    }
+
+    router.push('/');
+  } catch (err: any) {
+    setError(err.message || 'Invalid email or password');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
