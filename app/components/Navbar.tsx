@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className=" space-x-8 items-center">
             <Link href="/" className="text-gray-700 hover:text-[#00684D] font-medium transition">Home</Link>
             <Link href="/category" className="text-gray-700 hover:text-[#00684D] font-medium transition">Category</Link>
-            <Link href="/review" className="text-gray-700 hover:text-[#00684D] font-medium transition">Review</Link>
+            {/* <Link href="/review" className="text-gray-700 hover:text-[#00684D] font-medium transition">Review</Link> */}
             <Link href="/events" className="text-gray-700 hover:text-[#00684D] font-medium transition">Events</Link>
             <Link href="/booking" className="text-gray-700 hover:text-[#00684D] font-medium transition">Booking</Link>
           </div>
