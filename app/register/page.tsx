@@ -77,14 +77,14 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition"
+            className="w-full py-3 bg-[#00684D] text-white font-semibold rounded-xl hover:bg-[#048664] transition"
           >
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
         
         <p className="text-center text-sm text-gray-600 mt-4">
-          Already have an account? <Link href="/login" className="text-indigo-600 font-medium hover:underline">Login</Link>
+          Already have an account? <Link href="/login" className="text-[#00684D] font-medium hover:underline">Login</Link>
         </p>
       </div>
     </div>

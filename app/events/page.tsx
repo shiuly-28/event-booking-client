@@ -52,7 +52,7 @@ export default async function AllEventsPage() {
                   <div className="mt-auto">
                     <Link
                       href={`/events/${event.id || event._id}`}
-                      className="block w-full text-center bg-indigo-50 text-[#00684D] font-semibold py-2.5 rounded-xl hover:bg-[#00684D] hover:text-white transition"
+                      className="block w-full text-center bg-indigo-50 text-[#00684D] font-semibold py-2.5 rounded-xl hover:bg-[#01916a] hover:text-white transition"
                     >
                       Book Now
                     </Link>

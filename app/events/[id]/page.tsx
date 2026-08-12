@@ -83,7 +83,7 @@ export default function EventDetailsPage() {
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+          <span className="text-sm font-semibold text-[#00684D] bg-indigo-50 px-3 py-1 rounded-full">
             {event.startsAt ? new Date(event.startsAt).toLocaleDateString() : event.date}
           </span>
           <span className="text-lg font-bold text-gray-900 bg-gray-100 px-4 py-1 rounded-full">
@@ -100,7 +100,7 @@ export default function EventDetailsPage() {
         <button
           onClick={handleBooking}
           disabled={bookingLoading}
-          className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-[#00684D] transition shadow-lg"
+          className="w-full py-4 bg-[#00684D] text-white font-bold rounded-xl hover:bg-[#00684D] transition shadow-lg"
         >
           {bookingLoading ? 'Processing Booking...' : 'Confirm Booking'}
         </button>
